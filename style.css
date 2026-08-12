@@ -765,8 +765,8 @@ body::after {
     }
     
     .cat-avatar {
-        width: 260px !important;
-        height: 180px !important;
+        width: 280px !important;
+        height: 200px !important;
         border-radius: 16px;
     }
     
