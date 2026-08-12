@@ -768,6 +768,8 @@ body::after {
         width: 280px !important;
         height: 200px !important;
         border-radius: 16px;
+         margin-top: -10px !important;  /* MOVED UP */
+        margin-bottom: 0.3rem !important;  /* REDUCED BOTTOM MARGIN */
     }
     
     .cat-avatar #catEmoji {
@@ -892,9 +894,11 @@ body::after {
     }
     
     .cat-avatar {
-        width: 220px !important;
-        height: 155px !important;
+        width: 250px !important;
+        height: 170px !important;
         border-radius: 14px;
+        margin-top: -8px !important;  /* MOVED UP (slightly less on smaller screens) */
+        margin-bottom: 0.2rem !important;  /* REDUCED BOTTOM MARGIN */
     }
     
     .cat-avatar #catEmoji {
