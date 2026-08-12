@@ -750,7 +750,7 @@ body::after {
 }
 
 /* ======================================== */
-/* MOBILE RESPONSIVE - GIF MOVES UP */
+/* MOBILE RESPONSIVE */
 /* ======================================== */
 @media (max-width: 560px) {
     .card {
@@ -768,18 +768,15 @@ body::after {
         width: 280px !important;
         height: 200px !important;
         border-radius: 16px;
-        margin-top: -15px !important;
+        margin-top: -15px !important;  /* Move entire container up slightly */
         margin-bottom: 0.1rem !important;
-        overflow: visible !important;
     }
     
-    /* ===== MOVE ONLY THE GIF UP ===== */
+    /* ===== MOVE THE GIF UP WITH TRANSFORM ===== */
     .cat-avatar #catGif {
-        top: -30px !important;
-        height: calc(100% + 30px) !important;
+        transform: translateY(-20px) !important;
+        height: calc(100% + 20px) !important;
         object-fit: cover !important;
-        position: absolute !important;
-        display: block !important;
     }
     
     .cat-avatar #catEmoji {
@@ -904,18 +901,15 @@ body::after {
         width: 250px !important;
         height: 165px !important;
         border-radius: 14px;
-        margin-top: -12px !important;
+        margin-top: -12px !important;  /* Move entire container up slightly */
         margin-bottom: 0.1rem !important;
-        overflow: visible !important;
     }
     
-    /* ===== MOVE ONLY THE GIF UP ===== */
+    /* ===== MOVE THE GIF UP WITH TRANSFORM ===== */
     .cat-avatar #catGif {
-        top: -25px !important;
-        height: calc(100% + 25px) !important;
+        transform: translateY(-15px) !important;
+        height: calc(100% + 15px) !important;
         object-fit: cover !important;
-        position: absolute !important;
-        display: block !important;
     }
     
     .cat-avatar #catEmoji {
