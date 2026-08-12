@@ -807,9 +807,12 @@ body::after {
         transform: translateY(-5px);
     }
     
+    /* ===== INCREASED SUCCESS MESSAGE FONT SIZE ON TABLET ===== */
     .success-message .success-main {
-        font-size: 1.6rem !important;
+        font-size: 2rem !important;
+        letter-spacing: 0.5px;
     }
+    /* ======================================================== */
     
     /* ===== MASSIVELY ENLARGED RESULT MESSAGE ON TABLET ===== */
     .result-message {
@@ -927,9 +930,12 @@ body::after {
         margin: 0.2rem auto 0.8rem;
     }
     
+    /* ===== INCREASED SUCCESS MESSAGE FONT SIZE ON SMALL MOBILE ===== */
     .success-message .success-main {
-        font-size: 1.3rem !important;
+        font-size: 1.7rem !important;
+        letter-spacing: 0.5px;
     }
+    /* ============================================================== */
     
     /* ===== MASSIVELY ENLARGED RESULT MESSAGE ON SMALL MOBILE ===== */
     .result-message {
