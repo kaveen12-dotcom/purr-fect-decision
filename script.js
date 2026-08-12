@@ -319,13 +319,20 @@
     }
 
     // ========================================
-    // INCREASE YES BUTTON SIZE - MAX 1.5x
+    // INCREASE YES BUTTON SIZE - SMALL GROWTH FOR MOBILE
     // ========================================
     function increaseYesButton() {
         if (isResultShown) return;
         
-        // Increase scale by 0.03 each time (max 1.5x)
-        yesButtonScale = Math.min(yesButtonScale + 0.03, 1.5);
+        // Check if mobile device
+        const isMobile = window.innerWidth <= 768;
+        
+        // Smaller growth for mobile
+        const growthStep = isMobile ? 0.015 : 0.03;
+        const maxScale = isMobile ? 1.2 : 1.4;
+        
+        // Increase scale
+        yesButtonScale = Math.min(yesButtonScale + growthStep, maxScale);
         
         // Apply scale
         yesBtn.style.transform = `scale(${yesButtonScale})`;
@@ -337,7 +344,7 @@
         yesBtn.style.fontSize = newFontSize + 'rem';
         yesBtn.style.padding = newPadding + 'rem ' + (newPadding * 3) + 'rem';
         
-        console.log(`✅ Yes button scaled to: ${yesButtonScale}x`);
+        console.log(`✅ Yes button scaled to: ${yesButtonScale}x (Mobile: ${isMobile})`);
     }
 
     // ========================================
