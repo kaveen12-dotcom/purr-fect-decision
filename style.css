@@ -571,7 +571,7 @@ body::after {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05), 0 0 30px rgba(255, 255, 255, 0.05);
     z-index: 5;
     position: relative;
-    width: 90%;
+    width: 95%;
 }
 
 .result-message.show {
