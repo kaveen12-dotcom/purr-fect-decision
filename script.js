@@ -72,6 +72,49 @@
     }
 
     // ========================================
+    // FUNCTION TO MOVE ONLY THE GIF UP ON MOBILE
+    // ========================================
+    function adjustGifForMobile() {
+        const catGif = document.getElementById('catGif');
+        const catImage = document.getElementById('catImage');
+        
+        if (!catGif) return;
+        
+        const width = window.innerWidth;
+        console.log('📱 Adjusting ONLY GIF for width:', width);
+        
+        // Check if GIF is visible (not hidden by fallback)
+        const computedStyle = window.getComputedStyle(catGif);
+        if (computedStyle.display === 'none') {
+            console.log('⚠️ GIF is hidden, skipping adjustment');
+            return;
+        }
+        
+        // Remove any existing inline styles first (except what we set)
+        // We'll use setProperty with !important to override CSS
+        
+        if (width <= 420) {
+            // Small phones - move ONLY the GIF up
+            catGif.style.setProperty('top', '-40px', 'important');
+            catGif.style.setProperty('height', 'calc(100% + 40px)', 'important');
+            catGif.style.setProperty('object-fit', 'cover', 'important');
+            console.log('📱 Small mobile: GIF moved up 40px');
+        } else if (width <= 560) {
+            // Tablets - move ONLY the GIF up
+            catGif.style.setProperty('top', '-45px', 'important');
+            catGif.style.setProperty('height', 'calc(100% + 45px)', 'important');
+            catGif.style.setProperty('object-fit', 'cover', 'important');
+            console.log('📱 Tablet: GIF moved up 45px');
+        } else {
+            // Desktop - reset to original position
+            catGif.style.setProperty('top', '0', 'important');
+            catGif.style.setProperty('height', '100%', 'important');
+            catGif.style.setProperty('object-fit', 'cover', 'important');
+            console.log('💻 Desktop: GIF at original position');
+        }
+    }
+
+    // ========================================
     // FUNCTION TO RESET THE PAGE
     // ========================================
     function resetPage() {
@@ -144,6 +187,9 @@
             if (icon) icon.textContent = '🔇';
         }
         isMusicPlaying = false;
+
+        // Re-apply mobile adjustment after reset
+        setTimeout(adjustGifForMobile, 100);
 
         console.log('✅ Page reset complete!');
     }
@@ -241,6 +287,8 @@
         catGif.style.display = 'block';
         catGif.style.opacity = '1';
         catAvatar.classList.remove('gif-failed');
+        // Apply mobile adjustment after GIF loads
+        setTimeout(adjustGifForMobile, 50);
     }
 
     function handleGifError() {
@@ -267,6 +315,8 @@
                 handleGifError();
             }
         }
+        // Apply adjustment after timeout
+        adjustGifForMobile();
     }, 2000);
 
     function showCatImage() {
@@ -517,6 +567,9 @@
 
     let resizeTimeout = null;
     window.addEventListener('resize', function() {
+        // Adjust GIF on resize
+        adjustGifForMobile();
+        
         if (isResultShown) return;
         if (!isInitialPosition) {
             clearTimeout(resizeTimeout);
@@ -564,9 +617,28 @@
 
     window.addEventListener('orientationchange', function() {
         setTimeout(() => {
+            // Re-apply adjustment on orientation change
+            adjustGifForMobile();
+            
             if (!isResultShown && !isInitialPosition) {
                 moveNoButton();
             }
         }, 300);
     });
+
+    // ========================================
+    // INITIAL SETUP - Apply adjustment on load
+    // ========================================
+    // Run immediately after setup
+    setTimeout(function() {
+        adjustGifForMobile();
+        console.log('✅ Initial mobile adjustment applied');
+    }, 100);
+
+    // Also run on full load
+    window.addEventListener('load', function() {
+        adjustGifForMobile();
+        console.log('✅ Load event: mobile adjustment applied');
+    });
+
 })();
