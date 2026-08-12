@@ -145,7 +145,41 @@
         }
         isMusicPlaying = false;
 
+        // Re-apply mobile adjustments after reset
+        adjustCatAvatarForMobile();
+
         console.log('✅ Page reset complete!');
+    }
+
+    // ========================================
+    // FUNCTION TO ADJUST CAT AVATAR FOR MOBILE
+    // ========================================
+    function adjustCatAvatarForMobile() {
+        if (!catAvatar) return;
+        
+        const width = window.innerWidth;
+        
+        // Remove any existing inline styles first
+        catAvatar.style.marginTop = '';
+        catAvatar.style.marginBottom = '';
+        catAvatar.style.transform = '';
+        
+        if (width <= 420) {
+            // Small phones
+            catAvatar.style.marginTop = '-35px';
+            catAvatar.style.marginBottom = '-0.3rem';
+            console.log('📱 Mobile adjustment applied (small): marginTop: -35px');
+        } else if (width <= 560) {
+            // Tablets / larger phones
+            catAvatar.style.marginTop = '-40px';
+            catAvatar.style.marginBottom = '-0.3rem';
+            console.log('📱 Mobile adjustment applied (tablet): marginTop: -40px');
+        } else {
+            // Desktop
+            catAvatar.style.marginTop = '0';
+            catAvatar.style.marginBottom = '0.5rem';
+            console.log('💻 Desktop: no adjustment');
+        }
     }
 
     // ========================================
@@ -517,6 +551,9 @@
 
     let resizeTimeout = null;
     window.addEventListener('resize', function() {
+        // Adjust cat avatar on resize
+        adjustCatAvatarForMobile();
+        
         if (isResultShown) return;
         if (!isInitialPosition) {
             clearTimeout(resizeTimeout);
@@ -564,9 +601,21 @@
 
     window.addEventListener('orientationchange', function() {
         setTimeout(() => {
+            // Re-apply mobile adjustments on orientation change
+            adjustCatAvatarForMobile();
+            
             if (!isResultShown && !isInitialPosition) {
                 moveNoButton();
             }
         }, 300);
     });
+
+    // ========================================
+    // INITIAL SETUP - Apply mobile adjustments on load
+    // ========================================
+    window.addEventListener('load', function() {
+        adjustCatAvatarForMobile();
+        console.log('✅ Initial mobile adjustments applied');
+    });
+
 })();
