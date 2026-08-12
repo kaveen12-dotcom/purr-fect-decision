@@ -108,7 +108,7 @@
         noBtn.style.transform = 'translateX(-30px)';
         noBtn.style.zIndex = '10';
         noBtn.innerHTML = 'No';
-        noClickCount = 0; // Reset click counter
+        noClickCount = 0;
 
         // Reset card style
         card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 0 60px rgba(255, 255, 255, 0.1), 0 0 120px rgba(255, 255, 255, 0.05)';
@@ -325,7 +325,7 @@
     }
 
     // ========================================
-    // MOVE NO BUTTON - WORKS ON MOBILE & DESKTOP
+    // MOVE NO BUTTON
     // ========================================
     function moveNoButton() {
         if (!noBtn || isResultShown) return;
@@ -428,24 +428,21 @@
     // ========================================
     noBtn.addEventListener('mouseenter', function(e) {
         if (isResultShown) return;
-        if (noClickCount < 999) { // Unlimited moves
-            if (moveTimeout) {
-                clearTimeout(moveTimeout);
-            }
-            moveTimeout = setTimeout(() => {
-                moveNoButton();
-                increaseYesButton();
-                const hoverTexts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
-                if (noClickCount < hoverTexts.length) {
-                    noBtn.innerHTML = hoverTexts[noClickCount];
-                }
-                moveTimeout = null;
-            }, 50);
+        if (moveTimeout) {
+            clearTimeout(moveTimeout);
         }
+        moveTimeout = setTimeout(() => {
+            moveNoButton();
+            const hoverTexts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
+            if (noClickCount < hoverTexts.length) {
+                noBtn.innerHTML = hoverTexts[noClickCount];
+            }
+            moveTimeout = null;
+        }, 50);
     });
 
     // ========================================
-    // NO BUTTON - MOVE ON CLICK (DESKTOP & MOBILE)
+    // NO BUTTON - MOVE ON CLICK (DESKTOP)
     // ========================================
     noBtn.addEventListener('mousedown', function(e) {
         e.preventDefault();
@@ -454,16 +451,13 @@
         noClickCount++;
         console.log('👆 No button clicked: ' + noClickCount + ' times');
         
-        // Always move the button
         moveNoButton();
-        increaseYesButton();
         const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
         if (noClickCount < texts.length) {
             noBtn.innerHTML = texts[noClickCount];
         }
         
-        // NEVER AUTO-GO TO YES - REMOVED THE 10 CLICK LIMIT
-        // The only way to trigger Yes is by clicking the Yes button!
+        // ✅ NO AUTO-YES! Only Yes button triggers the result!
     });
 
     // ========================================
@@ -476,16 +470,13 @@
         noClickCount++;
         console.log('👆 No button touched: ' + noClickCount + ' times');
         
-        // Always move the button
         moveNoButton();
-        increaseYesButton();
         const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
         if (noClickCount < texts.length) {
             noBtn.innerHTML = texts[noClickCount];
         }
         
-        // NEVER AUTO-GO TO YES - REMOVED THE 10 CLICK LIMIT
-        // The only way to trigger Yes is by clicking the Yes button!
+        // ✅ NO AUTO-YES! Only Yes button triggers the result!
     }, { passive: false });
 
     // ========================================
