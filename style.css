@@ -768,8 +768,8 @@ body::after {
         width: 280px !important;
         height: 200px !important;
         border-radius: 16px;
-         margin-top: -25px !important;  /* CHANGED: from -10px to -25px (moved up more) */
-        margin-bottom: 0.1rem !important;  /* CHANGED: from 0.3rem to 0.1rem */
+         margin-top: -10px !important;  /* MOVED UP */
+        margin-bottom: 0.3rem !important;  /* REDUCED BOTTOM MARGIN */
     }
     
     .cat-avatar #catEmoji {
@@ -895,10 +895,10 @@ body::after {
     
     .cat-avatar {
         width: 250px !important;
-        height: 170px !important;
+        height: 165px !important;
         border-radius: 14px;
-         margin-top: -20px !important;  /* CHANGED: from -8px to -20px (moved up more) */
-        margin-bottom: 0.1rem !important;  /* CHANGED: from 0.2rem to 0.1rem */
+        margin-top: -8px !important;  /* MOVED UP (slightly less on smaller screens) */
+        margin-bottom: 0.2rem !important;  /* REDUCED BOTTOM MARGIN */
     }
     
     .cat-avatar #catEmoji {
