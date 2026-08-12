@@ -609,7 +609,7 @@ body::after {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1.5px solid rgba(255, 255, 255, 0.2);
-    color: #5a2d4a !important; /* SAME COLOR AS purr‑fect decision. */
+    color: #5a2d4a !important;
     font-size: 0.95rem;
     font-weight: 600;
     padding: 0.4rem 1.4rem;
@@ -811,6 +811,32 @@ body::after {
         font-size: 1.6rem !important;
     }
     
+    /* ENLARGED RESULT MESSAGE ON TABLET */
+    .result-message {
+        font-size: 1.4rem;
+        padding: 1rem 0.8rem;
+        margin-top: 1.2rem;
+        border-radius: 80px;
+        width: 98%;
+        min-height: 100px;
+        gap: 0.8rem;
+    }
+    
+    .result-message span {
+        font-size: 1.1rem;
+        padding: 0.3rem 1.2rem;
+    }
+    
+    .result-message .result-sub {
+        font-size: 1.1rem !important;
+        padding: 0.3rem 1.2rem;
+    }
+    
+    .result-message .result-ask {
+        font-size: 1rem !important;
+        padding: 0.3rem 1.2rem;
+    }
+    
     .button-group {
         height: 75px;
         max-width: 280px;
@@ -847,17 +873,6 @@ body::after {
     
     .btn-no:active {
         transform: translateY(4px) translateX(-20px);
-    }
-    
-    .result-message {
-        font-size: 1.3rem;
-        padding: 0.6rem 0.3rem;
-        margin-top: 1rem;
-    }
-    
-    .result-message span {
-        font-size: 1rem;
-        padding: 0.1rem 0.8rem;
     }
 }
 
@@ -912,6 +927,32 @@ body::after {
         font-size: 1.3rem !important;
     }
     
+    /* ENLARGED RESULT MESSAGE ON SMALL MOBILE */
+    .result-message {
+        font-size: 1.2rem;
+        padding: 0.9rem 0.6rem;
+        margin-top: 1rem;
+        border-radius: 60px;
+        width: 100%;
+        min-height: 90px;
+        gap: 0.6rem;
+    }
+    
+    .result-message span {
+        font-size: 0.95rem;
+        padding: 0.25rem 1rem;
+    }
+    
+    .result-message .result-sub {
+        font-size: 0.95rem !important;
+        padding: 0.25rem 1rem;
+    }
+    
+    .result-message .result-ask {
+        font-size: 0.85rem !important;
+        padding: 0.25rem 1rem;
+    }
+    
     .button-group {
         height: 65px;
         max-width: 220px;
@@ -948,17 +989,6 @@ body::after {
     
     .btn-no:active {
         transform: translateY(4px) translateX(-15px);
-    }
-    
-    .result-message {
-        font-size: 1.1rem;
-        padding: 0.4rem 0.2rem;
-        margin-top: 0.8rem;
-    }
-    
-    .result-message span {
-        font-size: 0.85rem;
-        padding: 0.1rem 0.6rem;
     }
 }
 
