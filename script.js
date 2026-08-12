@@ -108,6 +108,7 @@
         noBtn.style.transform = 'translateX(-30px)';
         noBtn.style.zIndex = '10';
         noBtn.innerHTML = 'No';
+        noClickCount = 0; // Reset click counter
 
         // Reset card style
         card.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 0 60px rgba(255, 255, 255, 0.1), 0 0 120px rgba(255, 255, 255, 0.05)';
@@ -120,7 +121,6 @@
         isResultShown = false;
         isImageShown = false;
         isMovedUp = false;
-        noClickCount = 0;
         isInitialPosition = true;
 
         // Clear confetti
@@ -428,14 +428,14 @@
     // ========================================
     noBtn.addEventListener('mouseenter', function(e) {
         if (isResultShown) return;
-        if (noClickCount < 8) {
+        if (noClickCount < 999) { // Unlimited moves
             if (moveTimeout) {
                 clearTimeout(moveTimeout);
             }
             moveTimeout = setTimeout(() => {
                 moveNoButton();
                 increaseYesButton();
-                const hoverTexts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾'];
+                const hoverTexts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
                 if (noClickCount < hoverTexts.length) {
                     noBtn.innerHTML = hoverTexts[noClickCount];
                 }
@@ -452,24 +452,18 @@
         if (isResultShown) return;
         
         noClickCount++;
+        console.log('👆 No button clicked: ' + noClickCount + ' times');
         
-        if (noClickCount <= 8) {
-            moveNoButton();
-            increaseYesButton();
-            const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹'];
-            if (noClickCount <= texts.length) {
-                noBtn.innerHTML = texts[noClickCount - 1];
-            }
+        // Always move the button
+        moveNoButton();
+        increaseYesButton();
+        const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
+        if (noClickCount < texts.length) {
+            noBtn.innerHTML = texts[noClickCount];
         }
-
-        // ONLY SHOW RESULT AFTER 10 CLICKS
-        if (noClickCount >= 10) {
-            showResult();
-            const msgSpan = resultMsg.querySelector('span:first-child');
-            if (msgSpan) {
-                msgSpan.innerHTML = 'You finally said yes 😻 (after ' + noClickCount + ' tries)';
-            }
-        }
+        
+        // NEVER AUTO-GO TO YES - REMOVED THE 10 CLICK LIMIT
+        // The only way to trigger Yes is by clicking the Yes button!
     });
 
     // ========================================
@@ -480,24 +474,18 @@
         if (isResultShown) return;
         
         noClickCount++;
+        console.log('👆 No button touched: ' + noClickCount + ' times');
         
-        if (noClickCount <= 8) {
-            moveNoButton();
-            increaseYesButton();
-            const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹'];
-            if (noClickCount <= texts.length) {
-                noBtn.innerHTML = texts[noClickCount - 1];
-            }
+        // Always move the button
+        moveNoButton();
+        increaseYesButton();
+        const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
+        if (noClickCount < texts.length) {
+            noBtn.innerHTML = texts[noClickCount];
         }
-
-        // ONLY SHOW RESULT AFTER 10 CLICKS
-        if (noClickCount >= 10) {
-            showResult();
-            const msgSpan = resultMsg.querySelector('span:first-child');
-            if (msgSpan) {
-                msgSpan.innerHTML = 'You finally said yes 😻 (after ' + noClickCount + ' tries)';
-            }
-        }
+        
+        // NEVER AUTO-GO TO YES - REMOVED THE 10 CLICK LIMIT
+        // The only way to trigger Yes is by clicking the Yes button!
     }, { passive: false });
 
     // ========================================
@@ -505,10 +493,8 @@
     // ========================================
     noBtn.addEventListener('touchmove', function(e) {
         if (isResultShown) return;
-        if (noClickCount < 8) {
-            e.preventDefault();
-            moveNoButton();
-        }
+        e.preventDefault();
+        moveNoButton();
     }, { passive: false });
 
     let resizeTimeout = null;
@@ -539,6 +525,7 @@
         noBtn.style.marginLeft = 'auto';
         noBtn.style.transform = 'translateX(-30px)';
         noBtn.style.zIndex = '10';
+        noBtn.innerHTML = 'No';
         
         buttonGroup.style.position = 'static';
         buttonGroup.style.justifyContent = 'center';
