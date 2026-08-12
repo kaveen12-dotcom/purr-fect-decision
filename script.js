@@ -72,6 +72,46 @@
     }
 
     // ========================================
+    // FUNCTION TO MOVE GIF UP ON MOBILE (ONLY THE GIF)
+    // ========================================
+    function adjustGifForMobile() {
+        const catGif = document.getElementById('catGif');
+        const catAvatar = document.getElementById('catAvatar');
+        
+        if (!catGif || !catAvatar) return;
+        
+        const width = window.innerWidth;
+        console.log('📱 Adjusting ONLY GIF for width:', width);
+        
+        // Get the computed style to check if GIF is visible
+        const computedStyle = window.getComputedStyle(catGif);
+        if (computedStyle.display === 'none') {
+            console.log('⚠️ GIF is hidden (fallback emoji showing), skipping adjustment');
+            return;
+        }
+        
+        if (width <= 420) {
+            // Small phones - move ONLY the GIF up
+            catGif.style.setProperty('top', '-40px', 'important');
+            catGif.style.setProperty('height', 'calc(100% + 40px)', 'important');
+            catGif.style.setProperty('object-fit', 'cover', 'important');
+            console.log('📱 Small mobile: ONLY GIF moved up 40px');
+        } else if (width <= 560) {
+            // Tablets - move ONLY the GIF up
+            catGif.style.setProperty('top', '-45px', 'important');
+            catGif.style.setProperty('height', 'calc(100% + 45px)', 'important');
+            catGif.style.setProperty('object-fit', 'cover', 'important');
+            console.log('📱 Tablet: ONLY GIF moved up 45px');
+        } else {
+            // Desktop - reset to original position
+            catGif.style.setProperty('top', '0', 'important');
+            catGif.style.setProperty('height', '100%', 'important');
+            catGif.style.setProperty('object-fit', 'cover', 'important');
+            console.log('💻 Desktop: ONLY GIF at original position');
+        }
+    }
+
+    // ========================================
     // FUNCTION TO RESET THE PAGE
     // ========================================
     function resetPage() {
@@ -146,59 +186,9 @@
         isMusicPlaying = false;
 
         // Re-apply mobile adjustments after reset
-        adjustGifForMobile();
+        setTimeout(adjustGifForMobile, 100);
 
         console.log('✅ Page reset complete!');
-    }
-
-    // ========================================
-    // FUNCTION TO MOVE GIF UP ON MOBILE
-    // ========================================
-    function adjustGifForMobile() {
-        const catGif = document.getElementById('catGif');
-        const catImage = document.getElementById('catImage');
-        const catAvatar = document.getElementById('catAvatar');
-        
-        if (!catGif || !catAvatar) return;
-        
-        const width = window.innerWidth;
-        console.log('📱 Adjusting GIF for width:', width);
-        
-        // Remove any existing inline styles first
-        catGif.style.top = '';
-        catGif.style.transform = '';
-        catGif.style.height = '';
-        
-        if (width <= 420) {
-            // Small phones - move GIF up by 30px
-            catGif.style.top = '-30px';
-            catGif.style.height = 'calc(100% + 30px)';
-            catGif.style.objectFit = 'cover';
-            console.log('📱 Small mobile: GIF moved up 30px');
-        } else if (width <= 560) {
-            // Tablets - move GIF up by 35px
-            catGif.style.top = '-35px';
-            catGif.style.height = 'calc(100% + 35px)';
-            catGif.style.objectFit = 'cover';
-            console.log('📱 Tablet: GIF moved up 35px');
-        } else {
-            // Desktop - reset to original position
-            catGif.style.top = '0';
-            catGif.style.height = '100%';
-            console.log('💻 Desktop: GIF at original position');
-        }
-        
-        // Also adjust the cat avatar container margin
-        if (width <= 420) {
-            catAvatar.style.marginTop = '-10px';
-            catAvatar.style.marginBottom = '0';
-        } else if (width <= 560) {
-            catAvatar.style.marginTop = '-15px';
-            catAvatar.style.marginBottom = '0';
-        } else {
-            catAvatar.style.marginTop = '0';
-            catAvatar.style.marginBottom = '0.5rem';
-        }
     }
 
     // ========================================
@@ -295,7 +285,7 @@
         catGif.style.opacity = '1';
         catAvatar.classList.remove('gif-failed');
         // Apply mobile adjustment after GIF loads
-        adjustGifForMobile();
+        setTimeout(adjustGifForMobile, 50);
     }
 
     function handleGifError() {
