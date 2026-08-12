@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>purr‑fect decision · moving no</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- MUSIC TOGGLE BUTTON - TOP RIGHT (ADD THIS) -->
+    <button class="music-toggle" id="musicToggle" aria-label="Toggle Music">
+        <span class="music-icon">🔊</span>
+    </button>
+
+    <div class="card" id="card">
+        <!-- cat avatar container -->
+        <div class="cat-avatar" id="catAvatar">
+            <img id="catGif" src="cat.gif" alt="Cute cat" />
+            <span id="catEmoji" style="display: none; font-size: 6rem; z-index: 1; position: relative;">🐱</span>
+            <img id="catImage" src="image.jpg" alt="Happy cat" />
+        </div>
+
+        <!-- Question text -->
+        <div class="question" id="questionText">
+            Can we be friends again?
+            <span class="paw-icon">🐾</span>
+        </div>
+        <div class="sub-text" id="subText">asked by a very small, very serious cat</div>
+
+        <!-- Success message -->
+        <div class="success-message" id="successMessage">
+            <span class="success-main">I knew we'd be friends again. </span>
+        </div>
+
+        <!-- button group -->
+        <div class="button-group" id="buttonGroup">
+            <button class="btn btn-yes" id="yesBtn">Yes 🥺</button>
+            <button class="btn btn-no" id="noBtn">No</button>
+        </div>
+
+        <div class="result-message" id="resultMessage">
+            <span>Just like old times, you’re here again.😍</span>
+            <span class="result-sub">purr‑fect decision.</span>
+            <!-- ASK ME AGAIN AS A BUTTON -->
+            <button class="btn-ask-again" id="askAgainBtn">ask me again 😉</button>
+        </div>
+
+        <!-- Confetti container -->
+        <div id="confettiContainer"></div>
+    </div>
+
+    <!-- Audio element for background music -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+        <!-- Fallback: if music doesn't load -->
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
