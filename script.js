@@ -324,6 +324,9 @@
         console.log(`✅ Yes button scaled to: ${yesButtonScale}`);
     }
 
+    // ========================================
+    // MOVE NO BUTTON - WORKS ON MOBILE & DESKTOP
+    // ========================================
     function moveNoButton() {
         if (!noBtn || isResultShown) return;
 
@@ -420,6 +423,9 @@
         console.log('❌ Ask again button NOT found');
     }
 
+    // ========================================
+    // NO BUTTON - MOVE ON HOVER (DESKTOP)
+    // ========================================
     noBtn.addEventListener('mouseenter', function(e) {
         if (isResultShown) return;
         if (noClickCount < 8) {
@@ -438,6 +444,9 @@
         }
     });
 
+    // ========================================
+    // NO BUTTON - MOVE ON CLICK (DESKTOP & MOBILE)
+    // ========================================
     noBtn.addEventListener('mousedown', function(e) {
         e.preventDefault();
         if (isResultShown) return;
@@ -453,10 +462,7 @@
             }
         }
 
-        if (noClickCount === 7) {
-            card.style.background = 'rgba(255, 255, 255, 0.2)';
-        }
-
+        // ONLY SHOW RESULT AFTER 10 CLICKS
         if (noClickCount >= 10) {
             showResult();
             const msgSpan = resultMsg.querySelector('span:first-child');
@@ -466,6 +472,9 @@
         }
     });
 
+    // ========================================
+    // NO BUTTON - MOVE ON TOUCH (MOBILE)
+    // ========================================
     noBtn.addEventListener('touchstart', function(e) {
         e.preventDefault();
         if (isResultShown) return;
@@ -481,16 +490,24 @@
             }
         }
 
-        if (noClickCount === 7) {
-            card.style.background = 'rgba(255, 255, 255, 0.2)';
-        }
-
+        // ONLY SHOW RESULT AFTER 10 CLICKS
         if (noClickCount >= 10) {
             showResult();
             const msgSpan = resultMsg.querySelector('span:first-child');
             if (msgSpan) {
                 msgSpan.innerHTML = 'You finally said yes 😻 (after ' + noClickCount + ' tries)';
             }
+        }
+    }, { passive: false });
+
+    // ========================================
+    // NO BUTTON - MOVE ON TOUCHMOVE (MOBILE)
+    // ========================================
+    noBtn.addEventListener('touchmove', function(e) {
+        if (isResultShown) return;
+        if (noClickCount < 8) {
+            e.preventDefault();
+            moveNoButton();
         }
     }, { passive: false });
 
