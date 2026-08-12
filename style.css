@@ -811,31 +811,35 @@ body::after {
         font-size: 1.6rem !important;
     }
     
-    /* ENLARGED RESULT MESSAGE ON TABLET */
+    /* ===== MASSIVELY ENLARGED RESULT MESSAGE ON TABLET ===== */
     .result-message {
-        font-size: 1.4rem;
-        padding: 1rem 0.8rem;
-        margin-top: 1.2rem;
-        border-radius: 80px;
-        width: 98%;
-        min-height: 100px;
-        gap: 0.8rem;
+        font-size: 1.6rem !important;
+        padding: 1.5rem 1.2rem !important;
+        margin-top: 1.5rem !important;
+        border-radius: 80px !important;
+        width: 100% !important;
+        min-height: 140px !important;
+        gap: 0.8rem !important;
+        border: 2.5px dashed rgba(255, 20, 147, 0.3) !important;
+        box-shadow: 0 8px 40px rgba(255, 20, 147, 0.08), 0 0 60px rgba(255, 20, 147, 0.05) !important;
     }
     
     .result-message span {
-        font-size: 1.1rem;
-        padding: 0.3rem 1.2rem;
+        font-size: 1.3rem !important;
+        padding: 0.5rem 1.6rem !important;
+        border-radius: 60px !important;
     }
     
     .result-message .result-sub {
-        font-size: 1.1rem !important;
-        padding: 0.3rem 1.2rem;
+        font-size: 1.3rem !important;
+        padding: 0.5rem 1.6rem !important;
     }
     
     .result-message .result-ask {
-        font-size: 1rem !important;
-        padding: 0.3rem 1.2rem;
+        font-size: 1.1rem !important;
+        padding: 0.5rem 1.6rem !important;
     }
+    /* ==================================================== */
     
     .button-group {
         height: 75px;
@@ -927,31 +931,35 @@ body::after {
         font-size: 1.3rem !important;
     }
     
-    /* ENLARGED RESULT MESSAGE ON SMALL MOBILE */
+    /* ===== MASSIVELY ENLARGED RESULT MESSAGE ON SMALL MOBILE ===== */
     .result-message {
-        font-size: 1.2rem;
-        padding: 0.9rem 0.6rem;
-        margin-top: 1rem;
-        border-radius: 60px;
-        width: 100%;
-        min-height: 90px;
-        gap: 0.6rem;
+        font-size: 1.4rem !important;
+        padding: 1.2rem 0.8rem !important;
+        margin-top: 1.2rem !important;
+        border-radius: 60px !important;
+        width: 100% !important;
+        min-height: 130px !important;
+        gap: 0.8rem !important;
+        border: 2.5px dashed rgba(255, 20, 147, 0.3) !important;
+        box-shadow: 0 8px 40px rgba(255, 20, 147, 0.08), 0 0 60px rgba(255, 20, 147, 0.05) !important;
     }
     
     .result-message span {
-        font-size: 0.95rem;
-        padding: 0.25rem 1rem;
+        font-size: 1.1rem !important;
+        padding: 0.4rem 1.3rem !important;
+        border-radius: 50px !important;
     }
     
     .result-message .result-sub {
-        font-size: 0.95rem !important;
-        padding: 0.25rem 1rem;
+        font-size: 1.1rem !important;
+        padding: 0.4rem 1.3rem !important;
     }
     
     .result-message .result-ask {
-        font-size: 0.85rem !important;
-        padding: 0.25rem 1rem;
+        font-size: 1rem !important;
+        padding: 0.4rem 1.3rem !important;
     }
+    /* ==================================================== */
     
     .button-group {
         height: 65px;
