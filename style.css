@@ -768,13 +768,15 @@ body::after {
         width: 280px !important;
         height: 200px !important;
         border-radius: 16px;
-        /* Container stays in normal position */
+        margin-top: -15px !important;  /* Move entire container up slightly */
+        margin-bottom: 0.1rem !important;
     }
     
-    /* ===== MOVE ONLY THE GIF UP ===== */
+    /* ===== MOVE THE GIF UP WITH TRANSFORM ===== */
     .cat-avatar #catGif {
-        top: -25px !important;
-        height: calc(100% + 25px) !important;
+        transform: translateY(-20px) !important;
+        height: calc(100% + 20px) !important;
+        object-fit: cover !important;
     }
     
     .cat-avatar #catEmoji {
@@ -798,6 +800,7 @@ body::after {
     
     .question {
         font-size: 1.9rem !important;
+        margin-top: -0.3rem !important;
     }
     
     .question.move-up {
@@ -807,7 +810,7 @@ body::after {
     .sub-text {
         font-size: 1rem;
         padding: 0.2rem 1rem;
-        margin: 0.2rem auto 1rem;
+        margin: 0.1rem auto 0.8rem !important;
     }
     
     .sub-text.move-up {
@@ -898,13 +901,15 @@ body::after {
         width: 250px !important;
         height: 165px !important;
         border-radius: 14px;
-        /* Container stays in normal position */
+        margin-top: -12px !important;  /* Move entire container up slightly */
+        margin-bottom: 0.1rem !important;
     }
     
-    /* ===== MOVE ONLY THE GIF UP ===== */
+    /* ===== MOVE THE GIF UP WITH TRANSFORM ===== */
     .cat-avatar #catGif {
-        top: -20px !important;
-        height: calc(100% + 20px) !important;
+        transform: translateY(-15px) !important;
+        height: calc(100% + 15px) !important;
+        object-fit: cover !important;
     }
     
     .cat-avatar #catEmoji {
@@ -928,6 +933,7 @@ body::after {
     
     .question {
         font-size: 1.5rem !important;
+        margin-top: -0.2rem !important;
     }
     
     .question.move-up {
@@ -937,7 +943,7 @@ body::after {
     .sub-text {
         font-size: 0.85rem;
         padding: 0.15rem 0.8rem;
-        margin: 0.2rem auto 0.8rem;
+        margin: 0.1rem auto 0.6rem !important;
     }
     
     .success-message .success-main {
