@@ -146,39 +146,58 @@
         isMusicPlaying = false;
 
         // Re-apply mobile adjustments after reset
-        adjustCatAvatarForMobile();
+        adjustGifForMobile();
 
         console.log('✅ Page reset complete!');
     }
 
     // ========================================
-    // FUNCTION TO ADJUST CAT AVATAR FOR MOBILE
+    // FUNCTION TO MOVE GIF UP ON MOBILE
     // ========================================
-    function adjustCatAvatarForMobile() {
-        if (!catAvatar) return;
+    function adjustGifForMobile() {
+        const catGif = document.getElementById('catGif');
+        const catImage = document.getElementById('catImage');
+        const catAvatar = document.getElementById('catAvatar');
+        
+        if (!catGif || !catAvatar) return;
         
         const width = window.innerWidth;
+        console.log('📱 Adjusting GIF for width:', width);
         
         // Remove any existing inline styles first
-        catAvatar.style.marginTop = '';
-        catAvatar.style.marginBottom = '';
-        catAvatar.style.transform = '';
+        catGif.style.top = '';
+        catGif.style.transform = '';
+        catGif.style.height = '';
         
         if (width <= 420) {
-            // Small phones
-            catAvatar.style.marginTop = '-35px';
-            catAvatar.style.marginBottom = '-0.3rem';
-            console.log('📱 Mobile adjustment applied (small): marginTop: -35px');
+            // Small phones - move GIF up by 30px
+            catGif.style.top = '-30px';
+            catGif.style.height = 'calc(100% + 30px)';
+            catGif.style.objectFit = 'cover';
+            console.log('📱 Small mobile: GIF moved up 30px');
         } else if (width <= 560) {
-            // Tablets / larger phones
-            catAvatar.style.marginTop = '-40px';
-            catAvatar.style.marginBottom = '-0.3rem';
-            console.log('📱 Mobile adjustment applied (tablet): marginTop: -40px');
+            // Tablets - move GIF up by 35px
+            catGif.style.top = '-35px';
+            catGif.style.height = 'calc(100% + 35px)';
+            catGif.style.objectFit = 'cover';
+            console.log('📱 Tablet: GIF moved up 35px');
         } else {
-            // Desktop
+            // Desktop - reset to original position
+            catGif.style.top = '0';
+            catGif.style.height = '100%';
+            console.log('💻 Desktop: GIF at original position');
+        }
+        
+        // Also adjust the cat avatar container margin
+        if (width <= 420) {
+            catAvatar.style.marginTop = '-10px';
+            catAvatar.style.marginBottom = '0';
+        } else if (width <= 560) {
+            catAvatar.style.marginTop = '-15px';
+            catAvatar.style.marginBottom = '0';
+        } else {
             catAvatar.style.marginTop = '0';
             catAvatar.style.marginBottom = '0.5rem';
-            console.log('💻 Desktop: no adjustment');
         }
     }
 
@@ -275,6 +294,8 @@
         catGif.style.display = 'block';
         catGif.style.opacity = '1';
         catAvatar.classList.remove('gif-failed');
+        // Apply mobile adjustment after GIF loads
+        adjustGifForMobile();
     }
 
     function handleGifError() {
@@ -301,6 +322,8 @@
                 handleGifError();
             }
         }
+        // Apply adjustment after timeout
+        adjustGifForMobile();
     }, 2000);
 
     function showCatImage() {
@@ -551,8 +574,8 @@
 
     let resizeTimeout = null;
     window.addEventListener('resize', function() {
-        // Adjust cat avatar on resize
-        adjustCatAvatarForMobile();
+        // Adjust GIF on resize
+        adjustGifForMobile();
         
         if (isResultShown) return;
         if (!isInitialPosition) {
@@ -601,8 +624,8 @@
 
     window.addEventListener('orientationchange', function() {
         setTimeout(() => {
-            // Re-apply mobile adjustments on orientation change
-            adjustCatAvatarForMobile();
+            // Re-apply adjustments on orientation change
+            adjustGifForMobile();
             
             if (!isResultShown && !isInitialPosition) {
                 moveNoButton();
@@ -611,11 +634,18 @@
     });
 
     // ========================================
-    // INITIAL SETUP - Apply mobile adjustments on load
+    // INITIAL SETUP - Apply adjustments on load
     // ========================================
-    window.addEventListener('load', function() {
-        adjustCatAvatarForMobile();
+    // Run immediately
+    setTimeout(function() {
+        adjustGifForMobile();
         console.log('✅ Initial mobile adjustments applied');
+    }, 100);
+
+    // Also run on full load
+    window.addEventListener('load', function() {
+        adjustGifForMobile();
+        console.log('✅ Load event: mobile adjustments applied');
     });
 
 })();
