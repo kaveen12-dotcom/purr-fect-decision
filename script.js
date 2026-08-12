@@ -90,27 +90,31 @@
             return;
         }
         
-        // Remove any existing inline styles first (except what we set)
-        // We'll use setProperty with !important to override CSS
-        
         if (width <= 420) {
             // Small phones - move ONLY the GIF up
             catGif.style.setProperty('top', '-40px', 'important');
             catGif.style.setProperty('height', 'calc(100% + 40px)', 'important');
             catGif.style.setProperty('object-fit', 'cover', 'important');
-            console.log('📱 Small mobile: GIF moved up 40px');
+            console.log('📱 Small mobile: ONLY GIF moved up 40px');
         } else if (width <= 560) {
             // Tablets - move ONLY the GIF up
             catGif.style.setProperty('top', '-45px', 'important');
             catGif.style.setProperty('height', 'calc(100% + 45px)', 'important');
             catGif.style.setProperty('object-fit', 'cover', 'important');
-            console.log('📱 Tablet: GIF moved up 45px');
+            console.log('📱 Tablet: ONLY GIF moved up 45px');
         } else {
             // Desktop - reset to original position
             catGif.style.setProperty('top', '0', 'important');
             catGif.style.setProperty('height', '100%', 'important');
             catGif.style.setProperty('object-fit', 'cover', 'important');
-            console.log('💻 Desktop: GIF at original position');
+            console.log('💻 Desktop: ONLY GIF at original position');
+        }
+        
+        // IMPORTANT: Make sure the image stays in its original position
+        if (catImage) {
+            catImage.style.setProperty('top', '0', 'important');
+            catImage.style.setProperty('height', '100%', 'important');
+            catImage.style.setProperty('object-fit', 'cover', 'important');
         }
     }
 
@@ -567,7 +571,7 @@
 
     let resizeTimeout = null;
     window.addEventListener('resize', function() {
-        // Adjust GIF on resize
+        // Adjust ONLY GIF on resize
         adjustGifForMobile();
         
         if (isResultShown) return;
@@ -632,13 +636,13 @@
     // Run immediately after setup
     setTimeout(function() {
         adjustGifForMobile();
-        console.log('✅ Initial mobile adjustment applied');
+        console.log('✅ Initial mobile adjustment applied (ONLY GIF)');
     }, 100);
 
     // Also run on full load
     window.addEventListener('load', function() {
         adjustGifForMobile();
-        console.log('✅ Load event: mobile adjustment applied');
+        console.log('✅ Load event: mobile adjustment applied (ONLY GIF)');
     });
 
 })();
