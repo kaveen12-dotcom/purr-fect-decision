@@ -768,8 +768,13 @@ body::after {
         width: 280px !important;
         height: 200px !important;
         border-radius: 16px;
-        margin-top: -40px !important;  /* CHANGED: moved up significantly more */
-        margin-bottom: -0.2rem !important;  /* CHANGED: negative margin to pull up */
+        /* Container stays in normal position */
+    }
+    
+    /* ===== MOVE ONLY THE GIF UP ===== */
+    .cat-avatar #catGif {
+        top: -25px !important;
+        height: calc(100% + 25px) !important;
     }
     
     .cat-avatar #catEmoji {
@@ -793,7 +798,6 @@ body::after {
     
     .question {
         font-size: 1.9rem !important;
-        margin-top: -0.5rem !important;  /* ADDED: pull question up too */
     }
     
     .question.move-up {
@@ -803,7 +807,7 @@ body::after {
     .sub-text {
         font-size: 1rem;
         padding: 0.2rem 1rem;
-        margin: 0.1rem auto 0.8rem !important;  /* CHANGED: reduced margin */
+        margin: 0.2rem auto 1rem;
     }
     
     .sub-text.move-up {
@@ -894,8 +898,13 @@ body::after {
         width: 250px !important;
         height: 165px !important;
         border-radius: 14px;
-        margin-top: -35px !important;  /* CHANGED: moved up significantly more */
-        margin-bottom: -0.3rem !important;  /* CHANGED: negative margin to pull up */
+        /* Container stays in normal position */
+    }
+    
+    /* ===== MOVE ONLY THE GIF UP ===== */
+    .cat-avatar #catGif {
+        top: -20px !important;
+        height: calc(100% + 20px) !important;
     }
     
     .cat-avatar #catEmoji {
@@ -919,7 +928,6 @@ body::after {
     
     .question {
         font-size: 1.5rem !important;
-        margin-top: -0.3rem !important;  /* ADDED: pull question up too */
     }
     
     .question.move-up {
@@ -929,7 +937,7 @@ body::after {
     .sub-text {
         font-size: 0.85rem;
         padding: 0.15rem 0.8rem;
-        margin: 0.1rem auto 0.6rem !important;  /* CHANGED: reduced margin */
+        margin: 0.2rem auto 0.8rem;
     }
     
     .success-message .success-main {
