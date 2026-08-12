@@ -97,7 +97,7 @@
 
         // Reset Yes button scale
         yesButtonScale = 1;
-        yesBtn.style.transform = `scale(1)`;
+        yesBtn.style.transform = 'scale(1)';
         yesBtn.style.fontSize = '1.6rem';
         yesBtn.style.padding = '0.6rem 1.8rem';
         yesBtn.style.width = 'auto';
@@ -319,19 +319,19 @@
     }
 
     // ========================================
-    // INCREASE YES BUTTON SIZE - FIXED
+    // INCREASE YES BUTTON SIZE - MAX 1.5x
     // ========================================
     function increaseYesButton() {
         if (isResultShown) return;
         
-        // Increase scale by 0.05 each time (max 2.0x)
-        yesButtonScale = Math.min(yesButtonScale + 0.05, 2.0);
+        // Increase scale by 0.03 each time (max 1.5x)
+        yesButtonScale = Math.min(yesButtonScale + 0.03, 1.5);
         
-        // Apply scale directly - no translateX to avoid conflicts
+        // Apply scale
         yesBtn.style.transform = `scale(${yesButtonScale})`;
         yesBtn.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
         
-        // Also increase font size and padding for better visual growth
+        // Also increase font size and padding slightly
         const newFontSize = 1.6 * yesButtonScale;
         const newPadding = 0.6 * yesButtonScale;
         yesBtn.style.fontSize = newFontSize + 'rem';
@@ -454,7 +454,7 @@
         }
         moveTimeout = setTimeout(() => {
             moveNoButton();
-            increaseYesButton(); // Yes button grows on hover!
+            increaseYesButton();
             const hoverTexts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
             if (noClickCount < hoverTexts.length) {
                 noBtn.innerHTML = hoverTexts[noClickCount];
@@ -474,7 +474,7 @@
         console.log('👆 No button clicked: ' + noClickCount + ' times');
         
         moveNoButton();
-        increaseYesButton(); // Yes button grows on click!
+        increaseYesButton();
         const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
         if (noClickCount < texts.length) {
             noBtn.innerHTML = texts[noClickCount];
@@ -492,7 +492,7 @@
         console.log('👆 No button touched: ' + noClickCount + ' times');
         
         moveNoButton();
-        increaseYesButton(); // Yes button grows on touch!
+        increaseYesButton();
         const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
         if (noClickCount < texts.length) {
             noBtn.innerHTML = texts[noClickCount];
