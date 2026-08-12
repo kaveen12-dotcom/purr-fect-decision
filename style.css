@@ -232,7 +232,6 @@ body::after {
     width: 300px;
     height: 200px;
     margin-bottom: 0.5rem;
-    margin-top: 30px; /* ADDED - pushes cat down on desktop */
     z-index: 1;
     position: relative;
     border-radius: 20px;
@@ -265,9 +264,9 @@ body::after {
     z-index: 3;
 }
 
-/* MOVING UP SLIGHTLY AND INCREASING SIZE - reduced upward movement */
+/* MOVING UP SLIGHTLY AND INCREASING SIZE */
 .cat-avatar.move-up {
-    transform: translateY(-15px) scale(1.06); /* CHANGED: was -30px, now -15px */
+    transform: translateY(-30px) scale(1.08);
     box-shadow: 
         0 12px 0 rgba(200, 200, 200, 0.25),
         0 20px 50px rgba(0, 0, 0, 0.1),
@@ -346,14 +345,14 @@ body::after {
     100% { transform: scale(1); }
 }
 
-/* Animation for moving up and growing - reduced movement */
+/* Animation for moving up and growing */
 @keyframes moveUpAndGrow {
     0% { 
         transform: translateY(0) scale(1);
         box-shadow: 0 8px 0 rgba(200, 200, 200, 0.2), 0 12px 30px rgba(0, 0, 0, 0.06);
     }
     100% { 
-        transform: translateY(-15px) scale(1.06); /* CHANGED: was -30px, now -15px */
+        transform: translateY(-30px) scale(1.08);
         box-shadow: 0 12px 0 rgba(200, 200, 200, 0.25), 0 20px 50px rgba(0, 0, 0, 0.1), 0 0 40px rgba(255, 255, 255, 0.1);
     }
 }
@@ -769,14 +768,14 @@ body::after {
         width: 280px !important;
         height: 200px !important;
         border-radius: 16px;
-        margin-top: 15px !important; /* CHANGED: was -15px, now +15px - pushes down */
+        margin-top: -15px !important;
         margin-bottom: 0.1rem !important;
     }
     
-    /* ===== REMOVED the negative transform that pulled the GIF up ===== */
+    /* ===== MOVE ONLY THE GIF UP ===== */
     .cat-avatar #catGif {
-        transform: none !important; /* CHANGED: was translateY(-20px) */
-        height: 100% !important;
+        transform: translateY(-20px) !important;
+        height: calc(100% + 20px) !important;
         object-fit: cover !important;
     }
     
@@ -785,7 +784,7 @@ body::after {
     }
     
     .cat-avatar.move-up {
-        transform: translateY(-10px) scale(1.05); /* CHANGED: was -20px, now -10px */
+        transform: translateY(-20px) scale(1.06);
     }
     
     @keyframes moveUpAndGrow {
@@ -794,7 +793,7 @@ body::after {
             box-shadow: 0 8px 0 rgba(200, 200, 200, 0.2), 0 12px 30px rgba(0, 0, 0, 0.06);
         }
         100% { 
-            transform: translateY(-10px) scale(1.05); /* CHANGED: was -20px, now -10px */
+            transform: translateY(-20px) scale(1.06);
             box-shadow: 0 12px 0 rgba(200, 200, 200, 0.25), 0 20px 50px rgba(0, 0, 0, 0.1);
         }
     }
@@ -902,14 +901,14 @@ body::after {
         width: 250px !important;
         height: 165px !important;
         border-radius: 14px;
-        margin-top: 12px !important; /* CHANGED: was -12px, now +12px - pushes down */
+        margin-top: -12px !important;
         margin-bottom: 0.1rem !important;
     }
     
-    /* ===== REMOVED the negative transform that pulled the GIF up ===== */
+    /* ===== MOVE ONLY THE GIF UP ===== */
     .cat-avatar #catGif {
-        transform: none !important; /* CHANGED: was translateY(-15px) */
-        height: 100% !important;
+        transform: translateY(-15px) !important;
+        height: calc(100% + 15px) !important;
         object-fit: cover !important;
     }
     
@@ -918,7 +917,7 @@ body::after {
     }
     
     .cat-avatar.move-up {
-        transform: translateY(-8px) scale(1.04); /* CHANGED: was -15px, now -8px */
+        transform: translateY(-15px) scale(1.05);
     }
     
     @keyframes moveUpAndGrow {
@@ -927,7 +926,7 @@ body::after {
             box-shadow: 0 8px 0 rgba(200, 200, 200, 0.2), 0 12px 30px rgba(0, 0, 0, 0.06);
         }
         100% { 
-            transform: translateY(-8px) scale(1.04); /* CHANGED: was -15px, now -8px */
+            transform: translateY(-15px) scale(1.05);
             box-shadow: 0 12px 0 rgba(200, 200, 200, 0.25), 0 20px 50px rgba(0, 0, 0, 0.1);
         }
     }
