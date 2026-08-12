@@ -97,7 +97,11 @@
 
         // Reset Yes button scale
         yesButtonScale = 1;
-        yesBtn.style.transform = 'scale(1) translateX(30px)';
+        yesBtn.style.transform = `scale(${yesButtonScale}) translateX(30px)`;
+        yesBtn.style.width = 'auto';
+        yesBtn.style.height = 'auto';
+        yesBtn.style.fontSize = '1.6rem';
+        yesBtn.style.padding = '0.6rem 1.8rem';
 
         // Reset No button position
         noBtn.style.position = 'relative';
@@ -314,10 +318,14 @@
         }, 600);
     }
 
+    // ========================================
+    // INCREASE YES BUTTON SIZE
+    // ========================================
     function increaseYesButton() {
         if (isResultShown) return;
         
-        yesButtonScale = Math.min(yesButtonScale + 0.05, 1.5);
+        // Increase scale by 0.05 each time (max 2.0x)
+        yesButtonScale = Math.min(yesButtonScale + 0.05, 2.0);
         yesBtn.style.transform = `scale(${yesButtonScale}) translateX(30px)`;
         yesBtn.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
         
@@ -370,6 +378,9 @@
         isInitialPosition = false;
     }
 
+    // ========================================
+    // SHOW RESULT - ONLY CALLED BY YES BUTTON
+    // ========================================
     function showResult() {
         if (isResultShown) return;
         isResultShown = true;
@@ -400,7 +411,9 @@
         }, 700);
     }
 
-    // Event Listeners
+    // ========================================
+    // YES BUTTON - ONLY WAY TO TRIGGER RESULT
+    // ========================================
     yesBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         console.log('🟢 Yes button clicked!');
@@ -433,6 +446,7 @@
         }
         moveTimeout = setTimeout(() => {
             moveNoButton();
+            increaseYesButton(); // Yes button grows on hover too!
             const hoverTexts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
             if (noClickCount < hoverTexts.length) {
                 noBtn.innerHTML = hoverTexts[noClickCount];
@@ -452,12 +466,13 @@
         console.log('👆 No button clicked: ' + noClickCount + ' times');
         
         moveNoButton();
+        increaseYesButton(); // Yes button grows on click!
         const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
         if (noClickCount < texts.length) {
             noBtn.innerHTML = texts[noClickCount];
         }
         
-        // ✅ NO AUTO-YES! Only Yes button triggers the result!
+        // ⛔️ ABSOLUTELY NO AUTO-YES!
     });
 
     // ========================================
@@ -471,12 +486,13 @@
         console.log('👆 No button touched: ' + noClickCount + ' times');
         
         moveNoButton();
+        increaseYesButton(); // Yes button grows on touch!
         const texts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
         if (noClickCount < texts.length) {
             noBtn.innerHTML = texts[noClickCount];
         }
         
-        // ✅ NO AUTO-YES! Only Yes button triggers the result!
+        // ⛔️ ABSOLUTELY NO AUTO-YES!
     }, { passive: false });
 
     // ========================================
@@ -508,6 +524,8 @@
         yesBtn.style.top = 'auto';
         yesBtn.style.transform = 'scale(1) translateX(30px)';
         yesBtn.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        yesBtn.style.fontSize = '1.6rem';
+        yesBtn.style.padding = '0.6rem 1.8rem';
         
         noBtn.style.position = 'relative';
         noBtn.style.left = 'auto';
