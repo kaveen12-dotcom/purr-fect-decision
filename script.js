@@ -97,11 +97,11 @@
 
         // Reset Yes button scale
         yesButtonScale = 1;
-        yesBtn.style.transform = `scale(${yesButtonScale}) translateX(30px)`;
-        yesBtn.style.width = 'auto';
-        yesBtn.style.height = 'auto';
+        yesBtn.style.transform = `scale(1)`;
         yesBtn.style.fontSize = '1.6rem';
         yesBtn.style.padding = '0.6rem 1.8rem';
+        yesBtn.style.width = 'auto';
+        yesBtn.style.height = 'auto';
 
         // Reset No button position
         noBtn.style.position = 'relative';
@@ -319,17 +319,25 @@
     }
 
     // ========================================
-    // INCREASE YES BUTTON SIZE
+    // INCREASE YES BUTTON SIZE - FIXED
     // ========================================
     function increaseYesButton() {
         if (isResultShown) return;
         
         // Increase scale by 0.05 each time (max 2.0x)
         yesButtonScale = Math.min(yesButtonScale + 0.05, 2.0);
-        yesBtn.style.transform = `scale(${yesButtonScale}) translateX(30px)`;
+        
+        // Apply scale directly - no translateX to avoid conflicts
+        yesBtn.style.transform = `scale(${yesButtonScale})`;
         yesBtn.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
         
-        console.log(`✅ Yes button scaled to: ${yesButtonScale}`);
+        // Also increase font size and padding for better visual growth
+        const newFontSize = 1.6 * yesButtonScale;
+        const newPadding = 0.6 * yesButtonScale;
+        yesBtn.style.fontSize = newFontSize + 'rem';
+        yesBtn.style.padding = newPadding + 'rem ' + (newPadding * 3) + 'rem';
+        
+        console.log(`✅ Yes button scaled to: ${yesButtonScale}x`);
     }
 
     // ========================================
@@ -446,7 +454,7 @@
         }
         moveTimeout = setTimeout(() => {
             moveNoButton();
-            increaseYesButton(); // Yes button grows on hover too!
+            increaseYesButton(); // Yes button grows on hover!
             const hoverTexts = ['No 😼', 'No 🙈', 'No 🐾', 'No 😿', 'No 💔', 'No 🙀', 'No 😾', 'No 😹', 'No 😻', 'No 🐱'];
             if (noClickCount < hoverTexts.length) {
                 noBtn.innerHTML = hoverTexts[noClickCount];
@@ -471,8 +479,6 @@
         if (noClickCount < texts.length) {
             noBtn.innerHTML = texts[noClickCount];
         }
-        
-        // ⛔️ ABSOLUTELY NO AUTO-YES!
     });
 
     // ========================================
@@ -491,8 +497,6 @@
         if (noClickCount < texts.length) {
             noBtn.innerHTML = texts[noClickCount];
         }
-        
-        // ⛔️ ABSOLUTELY NO AUTO-YES!
     }, { passive: false });
 
     // ========================================
@@ -522,7 +526,7 @@
         yesBtn.style.marginRight = 'auto';
         yesBtn.style.left = 'auto';
         yesBtn.style.top = 'auto';
-        yesBtn.style.transform = 'scale(1) translateX(30px)';
+        yesBtn.style.transform = 'scale(1)';
         yesBtn.style.transition = 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
         yesBtn.style.fontSize = '1.6rem';
         yesBtn.style.padding = '0.6rem 1.8rem';
