@@ -765,8 +765,8 @@ body::after {
     }
     
     .cat-avatar {
-        width: 220px;
-        height: 140px;
+        width: 260px !important;
+        height: 180px !important;
         border-radius: 16px;
     }
     
@@ -870,8 +870,8 @@ body::after {
     }
     
     .cat-avatar {
-        width: 170px;
-        height: 110px;
+        width: 220px !important;
+        height: 155px !important;
         border-radius: 14px;
     }
     
