@@ -932,7 +932,7 @@ body::after {
     
     /* ===== INCREASED SUCCESS MESSAGE FONT SIZE ON SMALL MOBILE ===== */
     .success-message .success-main {
-        font-size: 1.7rem !important;
+        font-size: 1.9rem !important;
         letter-spacing: 0.5px;
     }
     /* ============================================================== */
