@@ -768,8 +768,8 @@ body::after {
         width: 280px !important;
         height: 200px !important;
         border-radius: 16px;
-         margin-top: -10px !important;  /* MOVED UP */
-        margin-bottom: 0.3rem !important;  /* REDUCED BOTTOM MARGIN */
+        margin-top: -40px !important;  /* CHANGED: moved up significantly more */
+        margin-bottom: -0.2rem !important;  /* CHANGED: negative margin to pull up */
     }
     
     .cat-avatar #catEmoji {
@@ -793,6 +793,7 @@ body::after {
     
     .question {
         font-size: 1.9rem !important;
+        margin-top: -0.5rem !important;  /* ADDED: pull question up too */
     }
     
     .question.move-up {
@@ -802,21 +803,18 @@ body::after {
     .sub-text {
         font-size: 1rem;
         padding: 0.2rem 1rem;
-        margin: 0.2rem auto 1rem;
+        margin: 0.1rem auto 0.8rem !important;  /* CHANGED: reduced margin */
     }
     
     .sub-text.move-up {
         transform: translateY(-5px);
     }
     
-    /* ===== INCREASED SUCCESS MESSAGE FONT SIZE ON TABLET ===== */
     .success-message .success-main {
         font-size: 2rem !important;
         letter-spacing: 0.5px;
     }
-    /* ======================================================== */
     
-    /* ===== MASSIVELY ENLARGED RESULT MESSAGE ON TABLET ===== */
     .result-message {
         font-size: 1.6rem !important;
         padding: 1.5rem 1.2rem !important;
@@ -844,7 +842,6 @@ body::after {
         font-size: 1.1rem !important;
         padding: 0.5rem 1.6rem !important;
     }
-    /* ==================================================== */
     
     .button-group {
         height: 75px;
@@ -897,8 +894,8 @@ body::after {
         width: 250px !important;
         height: 165px !important;
         border-radius: 14px;
-        margin-top: -8px !important;  /* MOVED UP (slightly less on smaller screens) */
-        margin-bottom: 0.2rem !important;  /* REDUCED BOTTOM MARGIN */
+        margin-top: -35px !important;  /* CHANGED: moved up significantly more */
+        margin-bottom: -0.3rem !important;  /* CHANGED: negative margin to pull up */
     }
     
     .cat-avatar #catEmoji {
@@ -922,6 +919,7 @@ body::after {
     
     .question {
         font-size: 1.5rem !important;
+        margin-top: -0.3rem !important;  /* ADDED: pull question up too */
     }
     
     .question.move-up {
@@ -931,17 +929,14 @@ body::after {
     .sub-text {
         font-size: 0.85rem;
         padding: 0.15rem 0.8rem;
-        margin: 0.2rem auto 0.8rem;
+        margin: 0.1rem auto 0.6rem !important;  /* CHANGED: reduced margin */
     }
     
-    /* ===== INCREASED SUCCESS MESSAGE FONT SIZE ON SMALL MOBILE ===== */
     .success-message .success-main {
         font-size: 1.8rem !important;
         letter-spacing: 0.5px;
     }
-    /* ============================================================== */
     
-    /* ===== MASSIVELY ENLARGED RESULT MESSAGE ON SMALL MOBILE ===== */
     .result-message {
         font-size: 1.4rem !important;
         padding: 1.2rem 0.8rem !important;
@@ -969,7 +964,6 @@ body::after {
         font-size: 1rem !important;
         padding: 0.4rem 1.3rem !important;
     }
-    /* ==================================================== */
     
     .button-group {
         height: 65px;
